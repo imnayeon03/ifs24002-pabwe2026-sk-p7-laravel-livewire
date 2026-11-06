@@ -4,9 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Stock Inventory Management' }} - PABWE 2026</title>
-    <meta name="description" content="{{ $description ?? 'StockApp: kelola inventaris stok barang, kuantitas, harga, dan peringatan batas minimum secara efisien.' }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
-    @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         [x-cloak] { display: none !important; }
         html:has(.modal-scroll-lock),
