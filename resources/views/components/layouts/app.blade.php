@@ -6,7 +6,7 @@
     <title>{{ $title ?? 'Stock Inventory Management' }} - PABWE 2026</title>
     <meta name="description" content="{{ $description ?? 'StockApp: kelola inventaris stok barang, kuantitas, harga, dan peringatan batas minimum secara efisien.' }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         [x-cloak] { display: none !important; }
         html:has(.modal-scroll-lock),
@@ -206,6 +206,6 @@
         </div>
     @endauth
 
-    @livewireScripts
+    @livewireScriptConfig
 </body>
 </html>

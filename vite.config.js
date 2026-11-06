@@ -16,6 +16,10 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    build: {
+        // Source map untuk JS first-party yang besar (Lighthouse: "Missing source maps")
+        sourcemap: true,
+    },
     server: {
         watch: {
             ignored: ['**/storage/framework/views/**'],
