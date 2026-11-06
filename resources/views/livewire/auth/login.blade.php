@@ -1,7 +1,7 @@
 <div class="max-w-md mx-auto my-8">
     <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
         <div class="text-center mb-6">
-            <h2 class="text-2xl font-bold text-slate-900">Masuk ke Akun Anda</h2>
+            <h1 class="text-2xl font-bold text-slate-900">Masuk ke Akun Anda</h1>
             <p class="text-sm text-slate-500 mt-1">Kelola inventaris stok barang Anda secara efisien dan rapi</p>
         </div>
 
@@ -20,7 +20,7 @@
 
             <div class="flex items-center justify-between">
                 <label class="flex items-center space-x-2 text-sm text-slate-600 cursor-pointer">
-                    <input wire:model="remember" type="checkbox" class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+                    <input wire:model="remember" id="remember" type="checkbox" class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
                     <span>Ingat Saya</span>
                 </label>
             </div>
