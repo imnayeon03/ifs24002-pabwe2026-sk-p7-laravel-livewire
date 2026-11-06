@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Features\Todo\Models\Todo;
+use App\Features\Stock\Models\Stock;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -37,30 +37,42 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Todo::firstOrCreate(
-            ['user_id' => $member->id, 'title' => 'Mempelajari Arsitektur Laravel 13'],
+        Stock::firstOrCreate(
+            ['user_id' => $member->id, 'name' => 'Laptop ASUS VivoBook 14'],
             [
-                'description' => 'Memahami fitur baru Laravel 13 dan implementasi feature-first approach.',
-                'status' => 'completed',
-                'due_date' => now()->addDays(2)->format('Y-m-d'),
+                'sku' => 'LAP-ASUS-01',
+                'description' => 'Laptop kerja spesifikasi Core i5, RAM 16GB, SSD 512GB.',
+                'quantity' => 12,
+                'unit' => 'unit',
+                'price' => 8500000,
+                'min_stock' => 5,
+                'status' => 'available',
             ]
         );
 
-        Todo::firstOrCreate(
-            ['user_id' => $member->id, 'title' => 'Mengembangkan Komponen Livewire'],
+        Stock::firstOrCreate(
+            ['user_id' => $member->id, 'name' => 'Mouse Wireless Logitech M330'],
             [
-                'description' => 'Membuat komponen interaktif untuk CRUD todolist.',
-                'status' => 'in_progress',
-                'due_date' => now()->addDays(5)->format('Y-m-d'),
+                'sku' => 'MOU-LOGI-01',
+                'description' => 'Mouse silent click dengan konektivitas nirkabel 2.4GHz.',
+                'quantity' => 3,
+                'unit' => 'pcs',
+                'price' => 175000,
+                'min_stock' => 5,
+                'status' => 'low_stock',
             ]
         );
 
-        Todo::firstOrCreate(
-            ['user_id' => $member->id, 'title' => 'Integrasi OpenAI dan Excel Export/Import'],
+        Stock::firstOrCreate(
+            ['user_id' => $member->id, 'name' => 'Keyboard Mechanical TKL'],
             [
-                'description' => 'Implementasi Phpspreadsheet dan integrasi OpenAI endpoint.',
-                'status' => 'pending',
-                'due_date' => now()->addDays(7)->format('Y-m-d'),
+                'sku' => 'KBD-MECH-01',
+                'description' => 'Keyboard mechanical switch red dengan lampu latar RGB.',
+                'quantity' => 0,
+                'unit' => 'pcs',
+                'price' => 450000,
+                'min_stock' => 3,
+                'status' => 'out_of_stock',
             ]
         );
     }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'Todo List Application' }} - PABWE 2026</title>
+    <title>{{ $title ?? 'Stock Inventory Management' }} - PABWE 2026</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -36,13 +36,13 @@
             
             <!-- Brand / Logo -->
             <div class="h-16 flex items-center px-6 border-b border-slate-100 justify-between">
-                <a href="{{ auth()->user()->isAdmin() ? route('admin.users') : route('todos.index') }}" class="flex items-center space-x-2.5 font-bold text-lg text-blue-600 hover:text-blue-700 transition">
+                <a href="{{ auth()->user()->isAdmin() ? route('admin.users') : route('stocks.index') }}" class="flex items-center space-x-2.5 font-bold text-lg text-blue-600 hover:text-blue-700 transition">
                     <span class="p-2 bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 text-white rounded-xl shadow-md shadow-blue-500/20 flex items-center justify-center">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m4 10M4 7v10l8 4" />
                         </svg>
                     </span>
-                    <span class="text-slate-900 tracking-tight">TodoList <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent font-extrabold">Pro</span></span>
+                    <span class="text-slate-900 tracking-tight">Stock <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent font-extrabold">Inventory</span></span>
                 </a>
                 <button @click="sidebarOpen = false" class="md:hidden text-slate-400 hover:text-slate-600">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -88,12 +88,12 @@
                     </a>
                 @endif
 
-                <a href="{{ route('todos.index') }}" 
-                   class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition {{ request()->routeIs('todos.*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900' }}">
-                    <svg class="w-5 h-5 {{ request()->routeIs('todos.*') ? 'text-blue-600' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                <a href="{{ route('stocks.index') }}" 
+                   class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition {{ request()->routeIs('stocks.*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900' }}">
+                    <svg class="w-5 h-5 {{ request()->routeIs('stocks.*') ? 'text-blue-600' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m4 10M4 7v10l8 4" />
                     </svg>
-                    <span>My Todolist</span>
+                    <span>Stok Barang</span>
                 </a>
 
                 <a href="{{ route('profile') }}" 
@@ -129,10 +129,10 @@
                 <div class="flex items-center space-x-2">
                     <span class="p-1.5 bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 text-white rounded-lg shadow-sm flex items-center justify-center">
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m4 10M4 7v10l8 4" />
                         </svg>
                     </span>
-                    <span class="font-bold text-slate-900 tracking-tight">TodoList <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent font-extrabold">Pro</span></span>
+                    <span class="font-bold text-slate-900 tracking-tight">Stock <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent font-extrabold">Inventory</span></span>
                 </div>
                 <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold {{ auth()->user()->isAdmin() ? 'bg-purple-100 text-purple-800' : 'bg-emerald-100 text-emerald-800' }}">
                     {{ ucfirst(auth()->user()->role) }}

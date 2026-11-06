@@ -2,9 +2,10 @@
 
 namespace Tests\Unit\Models;
 
-use App\Features\Todo\Models\Todo;
+use App\Features\Stock\Models\Stock;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class UserModelTest extends TestCase
@@ -23,13 +24,13 @@ class UserModelTest extends TestCase
         $this->assertFalse($member->isAdmin());
     }
 
-    public function test_user_todos_relationship(): void
+    public function test_user_stocks_relationship(): void
     {
         $user = User::factory()->create();
-        Todo::factory()->count(3)->create(['user_id' => $user->id]);
+        Stock::factory()->count(3)->create(['user_id' => $user->id]);
 
-        $this->assertCount(3, $user->todos);
-        $this->assertInstanceOf(Todo::class, $user->todos->first());
+        $this->assertCount(3, $user->stocks);
+        $this->assertInstanceOf(Stock::class, $user->stocks->first());
     }
 
     public function test_user_casts(): void
@@ -45,14 +46,13 @@ class UserModelTest extends TestCase
 
     public function test_profile_photo_url_helper(): void
     {
-        \Illuminate\Support\Facades\Storage::fake('public');
+        Storage::fake('public');
 
         $userWithoutPhoto = User::factory()->create(['profile_photo_path' => null]);
         $this->assertStringContainsString('ui-avatars.com', $userWithoutPhoto->profilePhotoUrl());
 
-        \Illuminate\Support\Facades\Storage::disk('public')->put('profile-photos/avatar.png', 'content');
+        Storage::disk('public')->put('profile-photos/avatar.png', 'content');
         $userWithPhoto = User::factory()->create(['profile_photo_path' => 'profile-photos/avatar.png']);
         $this->assertStringContainsString('avatar.png', $userWithPhoto->profilePhotoUrl());
     }
 }
-
